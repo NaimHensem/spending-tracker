@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "Spending Tracker";
+}
+
+<div class="text-center" style="position: relative; display: flex; justify-content: center; align-items: center;">
+    <!-- Title -->
+    <h1 class="page-title" style="display: inline-block;">Total Spent: <span class="total-spent-color">RM @ViewBag.TotalSpent</span></h1>
+
+    <!-- Setting Button -->
+    <button id="setLimitBtn" class="btn spending-limit-btn">
+        <img src="~/Content/images/setting.svg" alt="Set Limit" class="btn-icon" />
+    </button>
+</div>
+
+<!-- Table -->
+<table class="table table-bordered mx-auto custom-table" style="width: 80%;">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Time</th>
+            <th>
+                Amount (RM)
+                <span id="amountArrow" class="sortable" data-order="asc">▼</span>
+            </th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody id="spendingTableBody">
+        @foreach (var record in Model)
+        {
+            <tr>
+                <td>@record.Date.ToString("d MMM yyyy")</td>
+                <td>@record.Date.ToString("h:mm tt")</td>
+                <td>@record.Amount</td>
+                <td>@record.Description</td>
+                <td>
+                    <a href="@Url.Action("Edit", "Spending", new { id = record.Id })" class="btn btn2">Edit</a>
+                    <a href="@Url.Action("Delete", "Spending", new { id = record.Id })" class="btn btn2 delete-btn">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p class="text-center">
+    <a href="@Url.Action("Add")" class="btn btn1">Add Spending</a>
+</p>
+
+@Html.Partial("_Modal")

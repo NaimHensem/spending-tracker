@@ -3,7 +3,11 @@
     ViewBag.Title = "Edit Spending";
 }
 
-<h2 class="page-title">Edit Spending</h2>
+<div class="page-header" style="position: relative;">
+    <h2 class="page-title">Edit Spending</h2>
+    <!-- Delete Button -->
+    <a href="@Url.Action("Delete", "Spending", new { id = Model.Id })" class="btn btn1 delete-btn" style="position: absolute; right: 0; top: 0;">Delete</a>
+</div>
 
 @using (Html.BeginForm(null, null, FormMethod.Post, new { autocomplete = "off" }))
 {
@@ -11,23 +15,33 @@
 
     <div class="form-group">
         @Html.LabelFor(model => model.Amount)
-        @Html.EditorFor(model => model.Amount, new { htmlAttributes =
-            new {
+        @Html.EditorFor(model => model.Amount, new
+        {
+            htmlAttributes =
+            new
+                 {
                 @class = "form-control",
                 @id = "amountInput",
                 autocomplete = "off",
-                @placeholder = "Enter the amount (RM) here",
-                @required = "required" }})
+                @placeholder = "Enter the amount (RM)",
+                @required = "required"
+                 }
+        })
     </div>
 
     <div class="form-group">
         @Html.LabelFor(model => model.Description)
-        @Html.EditorFor(model => model.Description, new { htmlAttributes =
-            new {
+        @Html.EditorFor(model => model.Description, new
+        {
+            htmlAttributes =
+            new
+                 {
                 @class = "form-control",
                 @autocomplete = "off",
-                @placeholder = "Enter the description here",
-                @required = "required" }})
+                @placeholder = "Enter the description",
+                @required = "required"
+                 }
+        })
     </div>
 
     <div class="form-group">

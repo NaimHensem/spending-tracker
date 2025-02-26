@@ -1,13 +1,36 @@
-﻿.navbar-custom {
+﻿/* Navigation bar */
+.navbar-custom {
     background-color: #25D366;
     color: white;
-    z-index: 1000; /* Ensure the navbar stays above the background */
+    z-index: 1000; /* Navbar stays above the background */
     position: fixed;
     top: 0;
     width: 100%;
-    border-bottom: 1px solid #ddd; /* Subtle border */
+    border-bottom: 1px solid #ddd;
+}
+@font-face {
+    font-family: 'RushDriver';
+    src: url('/Content/fonts/RushDriver.otf') format('opentype');
+}
+.navbar-custom { /* Font for navbar */
+    font-family: 'RushDriver', sans-serif;
+    color: white;
 }
 
+
+/* Title */
+.page-title {
+    margin-bottom: 30px;
+}
+.form-group {
+    margin-bottom: 15px;
+}
+.total-spent-color { /* Set color to the specific text */
+    color: #25D366;
+}
+
+
+/* Body */
 body {
     background-size: cover;
     background-attachment: fixed;
@@ -15,16 +38,22 @@ body {
     background-position: center;
     padding-top: 60px;
 }
-
 body.dark-mode {
-    background-image: url('../images/gelap.png'); /* Dark background */
+    background-image: url('../images/gelap.png');
 }
-
 body.light-mode {
-    background-image: url('../images/cerah.png'); /* Light background */
+    background-image: url('../images/cerah.png');
+}
+.container.body-content { /* Form container */
+    margin-top: 70px;
+    background-color: rgba(255, 255, 255, 0.9); /* Slight white background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Toggle Switch CSS */
+
+/* Toggle for Dark Mode */
 .switch {
     position: absolute;
     top: 15px;
@@ -33,13 +62,11 @@ body.light-mode {
     width: 60px;
     height: 34px;
 }
-
 .switch input {
     opacity: 0;
     width: 0;
     height: 0;
 }
-
 .slider {
     position: absolute;
     cursor: pointer;
@@ -51,7 +78,6 @@ body.light-mode {
     transition: 0.4s;
     border-radius: 34px;
 }
-
 .slider:before {
     position: absolute;
     content: "";
@@ -63,35 +89,13 @@ body.light-mode {
     background-color: white;
     transition: 0.4s;
 }
-
 input:checked + .slider {
     background-color: #2196F3;
 }
-
 input:checked + .slider:before {
     transform: translateX(26px);
 }
 
-
-.container.body-content {
-    margin-top: 70px;
-    background-color: rgba(255, 255, 255, 0.9); /* Slight white background */
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow */
-}
-
-/* Defining font */
-@font-face {
-    font-family: 'RushDriver';
-    src: url('/Content/fonts/RushDriver.otf') format('opentype');
-}
-
-/* Custom font for navigation bar */
-.navbar-custom {
-    font-family: 'RushDriver', sans-serif;
-    color: white;
-}
 
 /* Table */
 .custom-table {
@@ -101,7 +105,6 @@ input:checked + .slider:before {
     table-layout: fixed;
     font-weight: bolder;
 }
-
 .custom-table th {
     padding: 5px;
     text-align: center;
@@ -111,7 +114,6 @@ input:checked + .slider:before {
     transition: background-color 0.3s ease;
     word-wrap: break-word;
 }
-
 .custom-table td {
     padding: 5px;
     text-align: center;
@@ -119,9 +121,7 @@ input:checked + .slider:before {
     transition: background-color 0.3s ease;
     word-wrap: break-word;
 }
-
-/* Set column width */
-.custom-table th:nth-child(-n+3), 
+.custom-table th:nth-child(-n+3), /* Set column width */
 .custom-table td:nth-child(-n+3) {
     width: 15%; /* Date, Time, Amount */
 }
@@ -130,18 +130,17 @@ input:checked + .slider:before {
 .custom-table td:nth-child(4) {
     width: 30%; /* Description */
 }
-
 .custom-table th:nth-child(5), 
 .custom-table td:nth-child(5) {
     width: 25%; /* Actions */
 }
-
-/* Hover effect for table rows */
 .custom-table tr:hover {
     background-color: #90EE90;
     cursor: pointer; /* Change cursor to pointer */
 }
 
+
+/* Buttons */
 .btn1 {
     background-color: #25D366;
     color: white;
@@ -151,14 +150,16 @@ input:checked + .slider:before {
     font-weight: bold;
     margin: 5px;
     display: inline-block; /* Ensure buttons aligned */
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
-
 .btn1:hover {
-    background-color: white;
-    color: #25D366;
-    border-color: #25D366;
+    background-color: #25D366;
+    color: white;
+    transform: scale(1.1); /* Enlarges */
 }
-
+.btn1:active {
+    transform: scale(0.95); /* Shrinks on click */
+}
 .btn2 {
     background-color: white;
     color: #25D366;
@@ -170,24 +171,11 @@ input:checked + .slider:before {
     margin-left: 10px;
     display: inline-block;
 }
-
 .btn2:hover {
     background-color: #25D366;
     color: white;
 }
 
-/* Apply color to the specific text */
-.total-spent-color {
-    color: #25D366;
-}
-
-.page-title {
-    margin-bottom: 30px;
-}
-
-.form-group {
-    margin-bottom: 15px;
-}
 
 /* Sort arrow */
 .sortable {
@@ -198,7 +186,8 @@ input:checked + .slider:before {
     transition: color 0.3s ease;
 }
 
-/* Square Button for Spending Limit */
+
+/* Button for Spending Limit Mode */
 .spending-limit-btn {
     position: absolute;
     top: 0;
@@ -215,23 +204,20 @@ input:checked + .slider:before {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
-
 .spending-limit-btn:hover {
     background-color: #1ABF57;
-    transform: scale(1.1); /* Slight zoom on hover */
+    transform: scale(1.1);
 }
-
 .spending-limit-btn:active {
     transform: scale(0.95); /* Shrink on click */
 }
-
-/* Button Icon */
-.spending-limit-btn .btn-icon {
+.spending-limit-btn .btn-icon { /* Button Icon */
     width: 24px;
     height: 24px;
 }
 
-/* Modal Overlay */
+
+/* Modal */
 .modal {
     display: none; 
     position: fixed; 
@@ -241,76 +227,62 @@ input:checked + .slider:before {
     justify-content: center; align-items: center; 
     z-index: 1000;
 }
-
-/* Modal Content */
 .modal-content {
     background-color: #fff; border-radius: 8px; 
     padding: 20px; width: 400px; 
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); 
     position: relative; animation: scaleIn 0.3s ease-out;
 }
-
-/* Close Button */
 .modal .close {
     position: absolute; top: 10px; right: 10px; 
     font-size: 24px; color: #333; background: none; 
     border: none; cursor: pointer; z-index: 1;
 }
-
-/* Form Input Styling */
-.modal .form-group { margin-top: 50px; }
+.modal .form-group { /* Input field */
+    margin-top: 50px;
+}
 .modal .form-group input {
     width: 100%; padding: 10px; border: 1px solid #ccc; 
     border-radius: 4px;
 }
-
-/* Save Button */
-.modal .btn1 {
+.modal .btn1 { /* Save Button */
     background-color: #007bff; border: none; color: white; 
     padding: 8px 16px; border-radius: 4px; cursor: pointer;
 }
-
-.modal .btn1:hover { background-color: #0056b3; }
-
-/* Animation */
-@keyframes scaleIn {
+.modal .btn1:hover {
+    background-color: #0056b3;
+}
+@keyframes scaleIn { /* Animation */
     from { transform: scale(0.8); opacity: 0; } 
     to { transform: scale(1); opacity: 1; }
 }
-
-/* Small Toggle Button */
-.tgl-sm-container {
+.tgl-sm-container { /* Limit Toggle */
     display: flex;
     margin-top: 15px;
 }
-
 .tgl-sm {
     position: relative;
     display: inline-block;
     width: 40px;
     height: 20px;
 }
-
 .tgl-sm input {
     opacity: 0;
     width: 0;
     height: 0;
 }
-
 .tgl-sm-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 15px;
 }
-
 .tgl-sm-label {
     font-size: 14px;
     font-weight: 500;
     margin-bottom: 5px;
     color: #333;
 }
-
 .sldr-sm {
     position: absolute;
     cursor: pointer;
@@ -322,7 +294,6 @@ input:checked + .slider:before {
     transition: 0.4s;
     border-radius: 20px;
 }
-
 .sldr-sm:before {
     content: "";
     position: absolute;
@@ -334,11 +305,20 @@ input:checked + .slider:before {
     transition: 0.4s;
     border-radius: 50%;
 }
-
 input:checked + .sldr-sm {
     background-color: #25D366;
 }
-
 input:checked + .sldr-sm:before {
     transform: translateX(20px);
+}
+
+
+/* Invisible scrollbar */
+.table-container::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+.table-container {
+    -ms-overflow-style: none; /* For Explorer */
+    scrollbar-width: none; /* For Firefox */
 }

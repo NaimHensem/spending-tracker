@@ -1,0 +1,25 @@
+﻿<!-- Spending Limit Modal -->
+<div id="spendingLimitModal" class="modal">
+    <div class="modal-content">
+        <button type="button" class="close" aria-label="Close">&times;</button>
+        <form id="spendingLimitForm">
+            <div class="form-group">
+                <input type="number"
+                       id="spendingLimit"
+                       name="spendingLimit"
+                       placeholder="Set Spending Limit (RM)"
+                       required />
+            </div>
+            <button type="submit" class="btn btn1">Save</button>
+
+            <!-- Toggle Button with Label -->
+            <div class="tgl-sm-container">
+                <p class="tgl-sm-label">Switch to Spending Limit Mode</p>
+                <label class="tgl-sm">
+                    <input type="checkbox" id="tglSmSwitch" onchange="if(this.checked) window.location.href='@Url.Action("Index2", "Spending")';">
+                    <span class="sldr-sm round"></span>
+                </label>
+            </div>
+        </form>
+    </div>
+</div>

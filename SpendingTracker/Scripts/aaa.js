@@ -1,5 +1,4 @@
-﻿
-document.addEventListener("DOMContentLoaded", () => {
+﻿document.addEventListener("DOMContentLoaded", () => {
     // Amount input validation
     const amountInput = document.getElementById("amountInput");
     if (amountInput) {
@@ -62,4 +61,13 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("setLimitBtn").addEventListener("click", () => modal.style.display = "flex");  // Open
     document.querySelector(".modal .close").addEventListener("click", () => modal.style.display = "none"); // Close button
     modal.addEventListener("click", event => event.target === modal && (modal.style.display = "none"));    // Close on outside clicking
+
+    // Search functionality
+    document.getElementById('searchInput')?.addEventListener('input', function () {
+        const filter = this.value.toLowerCase();
+        document.querySelectorAll('#spendingTableBody tr').forEach(row => {
+            const description = row.cells[3]?.textContent.toLowerCase();
+            row.style.display = description?.includes(filter) ? '' : 'none';
+        });
+    });
 });
